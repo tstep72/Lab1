@@ -1,37 +1,45 @@
 package pl.lublin.wsei.java.cwiczenia;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        int liczba1 = 10;
-        double liczba2 = 3.14;
-        String tekst = "różne rzeczy";
+        Scanner input = new Scanner(System.in);
+        int num1 = 0, num2 = 0;
 
-        System.out.print("To");
-        System.out.print("jest");
-        System.out.print("print");
+        /*
+        do {                      // wersja 1
+            System.out.print("Podaj pierwszą liczbę: ");
+            num1 = input.nextInt();
+            if (num1 != 0) {
+                System.out.print("Podaj drugą liczbę: ");
+                num2 = input.nextInt();
+            }
+            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        } while ((num1 != 0) && num2 != 0);
+        */
 
-        System.out.println("To");
-        System.out.println("jest");
-        System.out.println("println");
+        /*
+        do {                     //wersja 2 - użycie break
+            System.out.print("Podaj pierwszą liczbę: ");
+            num1 = input.nextInt();
+            if (num1 == 0) break;
 
-        System.out.print("To\n");
-        System.out.print("jest\n");
-        System.out.print("print\n");
+            System.out.print("Podaj drugą liczbę: ");
+            num2 = input.nextInt();
+            if (num2 == 0) break;
 
-        System.out.printf("liczba1 = %d, liczba2 = %.2f, tekst = %20s %n", liczba1, liczba2, tekst);
+            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        } while (true);
+        */
 
-        System.out.println("Nazywaliśmy to \"witaminą B3\"");
+        do {                     //wersja 3 - Liczby obok siebie
+            System.out.print("Podaj liczby: ");
+            num1 = input.nextInt();
+            num2 = input.nextInt();
+            if (num1 == 0 || num2 == 0) break;
+            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        } while (true);
 
-        System.out.printf("alfa\tsin(alfa)\n");     //tabela funkcji sinus
-        for (int i=0; i<370; i+=10) {
-            System.out.printf("%d\t%f\t\n", i, Math.sin(i/360.0*2*Math.PI));
-        }
-
-        System.out.printf("arg\tlog2(arg)\tsum(arg)\n");        //tabela logarytmów i sum potęg
-        double suma = 0;
-        for (int j=0; j<10; j+=1) {
-            suma+=Math.pow(2, j);
-            System.out.printf("%.0f\t%.0f\t%.0f\n", Math.pow(2, j), Math.log(Math.pow(2, j))/Math.log(2), suma);
-        }
     }
 }
