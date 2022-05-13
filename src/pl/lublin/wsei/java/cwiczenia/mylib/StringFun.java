@@ -1,6 +1,7 @@
 package pl.lublin.wsei.java.cwiczenia.mylib;
 
 import org.apache.commons.lang3.StringUtils;
+import java.util.Random;
 
 import java.util.Locale;
 
@@ -76,5 +77,19 @@ public class StringFun {
             else { if (inputfixed.charAt(i) != inputfixed.charAt(inputfixed.length()-1-i)) result = false; }
         }
         return result;
+    }
+    public static String shuffle(String input) {
+        String inputdec = input;
+        String output = "", temp = "";
+        Random rnd = new Random();
+        int chosen;
+
+        for(int i=0; i < input.length(); i++) {
+            chosen = rnd.nextInt(inputdec.length());
+            output += inputdec.charAt(chosen);
+            temp = StringUtils.substring(inputdec, 0, chosen) + StringUtils.substring(inputdec, chosen+1);
+            inputdec = temp;
+        }
+        return output;
     }
 }
