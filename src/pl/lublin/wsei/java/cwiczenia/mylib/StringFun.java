@@ -62,4 +62,19 @@ public class StringFun {
         output = output.toLowerCase();
         return output;
     }
+    public static boolean isPalindrome(String input) {
+        boolean result = true;
+        String inputfixed = input.toLowerCase();                                //ignorowanie rozmiaru liter
+        String[] parts = StringUtils.split(inputfixed);                         //usuwanie spacji
+        inputfixed = StringUtils.join(parts);
+        inputfixed = StringUtils.stripAccents(inputfixed);                      //usuwanie akcentów
+        inputfixed = inputfixed.replaceAll("\\p{Punct}", "");   //usuwanie interpunkcji
+        //System.out.println("fixed: " + inputfixed);                           //sprawdzanie czy string został poprawnie "oczyszczony"
+
+        for(int i=0; i <= inputfixed.length()/2; i++) {
+            if (i == inputfixed.length()-1-i) break;
+            else { if (inputfixed.charAt(i) != inputfixed.charAt(inputfixed.length()-1-i)) result = false; }
+        }
+        return result;
+    }
 }
