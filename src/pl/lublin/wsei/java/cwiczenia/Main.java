@@ -3,42 +3,27 @@ package pl.lublin.wsei.java.cwiczenia;
 import java.util.Scanner;
 
 public class Main {
+
+    public static String leftPad(String aText, char aChar, int aWidth) {
+        String res = aText;
+        for (int i=0; i < (aWidth - aText.length()); i++) {
+            res = aChar + res;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int num1 = 0, num2 = 0;
+        Integer num1 = 0;
 
-        /*
-        do {                      // wersja 1
-            System.out.print("Podaj pierwszą liczbę: ");
-            num1 = input.nextInt();
-            if (num1 != 0) {
-                System.out.print("Podaj drugą liczbę: ");
-                num2 = input.nextInt();
-            }
-            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
-        } while ((num1 != 0) && num2 != 0);
-        */
 
-        /*
-        do {                     //wersja 2 - użycie break
-            System.out.print("Podaj pierwszą liczbę: ");
+        do {
+            System.out.print("Podaj liczbę: ");
             num1 = input.nextInt();
             if (num1 == 0) break;
-
-            System.out.print("Podaj drugą liczbę: ");
-            num2 = input.nextInt();
-            if (num2 == 0) break;
-
-            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
-        } while (true);
-        */
-
-        do {                     //wersja 3 - Liczby obok siebie
-            System.out.print("Podaj liczby: ");
-            num1 = input.nextInt();
-            num2 = input.nextInt();
-            if (num1 == 0 || num2 == 0) break;
-            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+            System.out.printf("DEC = %d, BIN = %s, HEX = %s \n", num1,
+                                                                leftPad(Integer.toBinaryString(num1), '0', 8),
+                                                                '%' + leftPad(num1.toHexString(num1).toUpperCase(), '0', 4) );
         } while (true);
 
     }
