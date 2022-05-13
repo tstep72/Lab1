@@ -1,5 +1,7 @@
 package pl.lublin.wsei.java.cwiczenia.mylib;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringFun {
     public static String anarchize(String input) {
         String output = "";
@@ -20,6 +22,17 @@ public class StringFun {
                 }
             }
         }
+        return output;
+    }
+    public static String camelize(String input) {
+        String inputLower = input.toLowerCase();
+        inputLower = StringUtils.normalizeSpace(inputLower);
+        String[] parts = StringUtils.split(inputLower);
+        for(int i=1; i < parts.length; i++) {
+            parts[i] = StringUtils.capitalize(parts[i]);
+        }
+        String output = StringUtils.join(parts);
+
         return output;
     }
 }
